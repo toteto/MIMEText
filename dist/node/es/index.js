@@ -594,7 +594,7 @@ ${attachments}
   }
 }
 
-const envctx = {
+const defaultNodeEnvCtx = {
   toBase64: function toBase64(data) {
     return Buffer.from(data).toString('base64')
   },
@@ -607,13 +607,13 @@ const envctx = {
 };
 
 class NodeMIMEMessage extends MIMEMessage {
-  constructor() {
-    super(envctx);
+  constructor(envctx) {
+    super({...defaultNodeEnvCtx, ...envctx});
   }
 }
 
-function createMimeMessage() {
-  return new NodeMIMEMessage()
+function createMimeMessage(envctx) {
+  return new NodeMIMEMessage(envctx)
 }
 
 export { createMimeMessage };

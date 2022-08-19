@@ -1,16 +1,22 @@
 import _Reflect$construct from '@babel/runtime-corejs3/core-js/reflect/construct';
+import _Object$keys from '@babel/runtime-corejs3/core-js/object/keys';
+import _Object$getOwnPropertySymbols from '@babel/runtime-corejs3/core-js/object/get-own-property-symbols';
+import _filterInstanceProperty from '@babel/runtime-corejs3/core-js/instance/filter';
+import _Object$getOwnPropertyDescriptor from '@babel/runtime-corejs3/core-js/object/get-own-property-descriptor';
+import _Object$getOwnPropertyDescriptors from '@babel/runtime-corejs3/core-js/object/get-own-property-descriptors';
+import _Object$defineProperties from '@babel/runtime-corejs3/core-js/object/define-properties';
+import _Object$defineProperty from '@babel/runtime-corejs3/core-js/object/define-property';
+import _defineProperty from '@babel/runtime-corejs3/helpers/defineProperty';
+import _createClass from '@babel/runtime-corejs3/helpers/createClass';
 import _classCallCheck from '@babel/runtime-corejs3/helpers/classCallCheck';
 import _inherits from '@babel/runtime-corejs3/helpers/inherits';
 import _possibleConstructorReturn from '@babel/runtime-corejs3/helpers/possibleConstructorReturn';
 import _getPrototypeOf from '@babel/runtime-corejs3/helpers/getPrototypeOf';
-import _createClass from '@babel/runtime-corejs3/helpers/createClass';
 import _sliceInstanceProperty from '@babel/runtime-corejs3/core-js/instance/slice';
 import _mapInstanceProperty from '@babel/runtime-corejs3/core-js/instance/map';
-import _Object$keys from '@babel/runtime-corejs3/core-js/object/keys';
 import _indexOfInstanceProperty from '@babel/runtime-corejs3/core-js/instance/index-of';
 import _concatInstanceProperty from '@babel/runtime-corejs3/core-js/instance/concat';
 import _Object$assign from '@babel/runtime-corejs3/core-js/object/assign';
-import _filterInstanceProperty from '@babel/runtime-corejs3/core-js/instance/filter';
 import _Array$from from '@babel/runtime-corejs3/core-js/array/from';
 import _Symbol from '@babel/runtime-corejs3/core-js/symbol';
 import _getIteratorMethod from '@babel/runtime-corejs3/core-js/get-iterator-method';
@@ -38,7 +44,7 @@ var MIMETextError = /*#__PURE__*/function (_Error) {
     return _this;
   }
 
-  return MIMETextError;
+  return _createClass(MIMETextError);
 }( /*#__PURE__*/_wrapNativeSuper(Error));
 
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof _Symbol !== "undefined" && _getIteratorMethod(o) || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
@@ -752,10 +758,14 @@ var MIMEMessage = /*#__PURE__*/function () {
   return MIMEMessage;
 }();
 
+function ownKeys(object, enumerableOnly) { var keys = _Object$keys(object); if (_Object$getOwnPropertySymbols) { var symbols = _Object$getOwnPropertySymbols(object); enumerableOnly && (symbols = _filterInstanceProperty(symbols).call(symbols, function (sym) { return _Object$getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : _Object$getOwnPropertyDescriptors ? _Object$defineProperties(target, _Object$getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { _Object$defineProperty(target, key, _Object$getOwnPropertyDescriptor(source, key)); }); } return target; }
+
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = _Reflect$construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_Reflect$construct) return false; if (_Reflect$construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(_Reflect$construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-var envctx = {
+var defaultBrowserEnvCtx = {
   toBase64: function toBase64(data) {
     return btoa(data);
   },
@@ -769,17 +779,17 @@ var NodeMIMEMessage = /*#__PURE__*/function (_MIMEMessage) {
 
   var _super = _createSuper(NodeMIMEMessage);
 
-  function NodeMIMEMessage() {
+  function NodeMIMEMessage(envctx) {
     _classCallCheck(this, NodeMIMEMessage);
 
-    return _super.call(this, envctx);
+    return _super.call(this, _objectSpread(_objectSpread({}, defaultBrowserEnvCtx), envctx));
   }
 
-  return NodeMIMEMessage;
+  return _createClass(NodeMIMEMessage);
 }(MIMEMessage);
 
-function createMimeMessage() {
-  return new NodeMIMEMessage();
+function createMimeMessage(envctx) {
+  return new NodeMIMEMessage(envctx);
 }
 
 export { createMimeMessage };

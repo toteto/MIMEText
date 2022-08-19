@@ -3,18 +3,24 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var _Reflect$construct = require('@babel/runtime-corejs3/core-js/reflect/construct');
+var _Object$keys = require('@babel/runtime-corejs3/core-js/object/keys');
+var _Object$getOwnPropertySymbols = require('@babel/runtime-corejs3/core-js/object/get-own-property-symbols');
+var _filterInstanceProperty = require('@babel/runtime-corejs3/core-js/instance/filter');
+var _Object$getOwnPropertyDescriptor = require('@babel/runtime-corejs3/core-js/object/get-own-property-descriptor');
+var _Object$getOwnPropertyDescriptors = require('@babel/runtime-corejs3/core-js/object/get-own-property-descriptors');
+var _Object$defineProperties = require('@babel/runtime-corejs3/core-js/object/define-properties');
+var _Object$defineProperty = require('@babel/runtime-corejs3/core-js/object/define-property');
+var _defineProperty = require('@babel/runtime-corejs3/helpers/defineProperty');
+var _createClass = require('@babel/runtime-corejs3/helpers/createClass');
 var _classCallCheck = require('@babel/runtime-corejs3/helpers/classCallCheck');
 var _inherits = require('@babel/runtime-corejs3/helpers/inherits');
 var _possibleConstructorReturn = require('@babel/runtime-corejs3/helpers/possibleConstructorReturn');
 var _getPrototypeOf = require('@babel/runtime-corejs3/helpers/getPrototypeOf');
-var _createClass = require('@babel/runtime-corejs3/helpers/createClass');
 var _sliceInstanceProperty = require('@babel/runtime-corejs3/core-js/instance/slice');
 var _mapInstanceProperty = require('@babel/runtime-corejs3/core-js/instance/map');
-var _Object$keys = require('@babel/runtime-corejs3/core-js/object/keys');
 var _indexOfInstanceProperty = require('@babel/runtime-corejs3/core-js/instance/index-of');
 var _concatInstanceProperty = require('@babel/runtime-corejs3/core-js/instance/concat');
 var _Object$assign = require('@babel/runtime-corejs3/core-js/object/assign');
-var _filterInstanceProperty = require('@babel/runtime-corejs3/core-js/instance/filter');
 var _Array$from = require('@babel/runtime-corejs3/core-js/array/from');
 var _Symbol = require('@babel/runtime-corejs3/core-js/symbol');
 var _getIteratorMethod = require('@babel/runtime-corejs3/core-js/get-iterator-method');
@@ -25,18 +31,24 @@ var _trimInstanceProperty = require('@babel/runtime-corejs3/core-js/instance/tri
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
 var _Reflect$construct__default = /*#__PURE__*/_interopDefaultLegacy(_Reflect$construct);
+var _Object$keys__default = /*#__PURE__*/_interopDefaultLegacy(_Object$keys);
+var _Object$getOwnPropertySymbols__default = /*#__PURE__*/_interopDefaultLegacy(_Object$getOwnPropertySymbols);
+var _filterInstanceProperty__default = /*#__PURE__*/_interopDefaultLegacy(_filterInstanceProperty);
+var _Object$getOwnPropertyDescriptor__default = /*#__PURE__*/_interopDefaultLegacy(_Object$getOwnPropertyDescriptor);
+var _Object$getOwnPropertyDescriptors__default = /*#__PURE__*/_interopDefaultLegacy(_Object$getOwnPropertyDescriptors);
+var _Object$defineProperties__default = /*#__PURE__*/_interopDefaultLegacy(_Object$defineProperties);
+var _Object$defineProperty__default = /*#__PURE__*/_interopDefaultLegacy(_Object$defineProperty);
+var _defineProperty__default = /*#__PURE__*/_interopDefaultLegacy(_defineProperty);
+var _createClass__default = /*#__PURE__*/_interopDefaultLegacy(_createClass);
 var _classCallCheck__default = /*#__PURE__*/_interopDefaultLegacy(_classCallCheck);
 var _inherits__default = /*#__PURE__*/_interopDefaultLegacy(_inherits);
 var _possibleConstructorReturn__default = /*#__PURE__*/_interopDefaultLegacy(_possibleConstructorReturn);
 var _getPrototypeOf__default = /*#__PURE__*/_interopDefaultLegacy(_getPrototypeOf);
-var _createClass__default = /*#__PURE__*/_interopDefaultLegacy(_createClass);
 var _sliceInstanceProperty__default = /*#__PURE__*/_interopDefaultLegacy(_sliceInstanceProperty);
 var _mapInstanceProperty__default = /*#__PURE__*/_interopDefaultLegacy(_mapInstanceProperty);
-var _Object$keys__default = /*#__PURE__*/_interopDefaultLegacy(_Object$keys);
 var _indexOfInstanceProperty__default = /*#__PURE__*/_interopDefaultLegacy(_indexOfInstanceProperty);
 var _concatInstanceProperty__default = /*#__PURE__*/_interopDefaultLegacy(_concatInstanceProperty);
 var _Object$assign__default = /*#__PURE__*/_interopDefaultLegacy(_Object$assign);
-var _filterInstanceProperty__default = /*#__PURE__*/_interopDefaultLegacy(_filterInstanceProperty);
 var _Array$from__default = /*#__PURE__*/_interopDefaultLegacy(_Array$from);
 var _Symbol__default = /*#__PURE__*/_interopDefaultLegacy(_Symbol);
 var _getIteratorMethod__default = /*#__PURE__*/_interopDefaultLegacy(_getIteratorMethod);
@@ -64,7 +76,7 @@ var MIMETextError = /*#__PURE__*/function (_Error) {
     return _this;
   }
 
-  return MIMETextError;
+  return _createClass__default["default"](MIMETextError);
 }( /*#__PURE__*/_wrapNativeSuper__default["default"](Error));
 
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof _Symbol__default["default"] !== "undefined" && _getIteratorMethod__default["default"](o) || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
@@ -778,10 +790,14 @@ var MIMEMessage = /*#__PURE__*/function () {
   return MIMEMessage;
 }();
 
+function ownKeys(object, enumerableOnly) { var keys = _Object$keys__default["default"](object); if (_Object$getOwnPropertySymbols__default["default"]) { var symbols = _Object$getOwnPropertySymbols__default["default"](object); enumerableOnly && (symbols = _filterInstanceProperty__default["default"](symbols).call(symbols, function (sym) { return _Object$getOwnPropertyDescriptor__default["default"](object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty__default["default"](target, key, source[key]); }) : _Object$getOwnPropertyDescriptors__default["default"] ? _Object$defineProperties__default["default"](target, _Object$getOwnPropertyDescriptors__default["default"](source)) : ownKeys(Object(source)).forEach(function (key) { _Object$defineProperty__default["default"](target, key, _Object$getOwnPropertyDescriptor__default["default"](source, key)); }); } return target; }
+
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf__default["default"](Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf__default["default"](this).constructor; result = _Reflect$construct__default["default"](Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn__default["default"](this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_Reflect$construct__default["default"]) return false; if (_Reflect$construct__default["default"].sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(_Reflect$construct__default["default"](Boolean, [], function () {})); return true; } catch (e) { return false; } }
-var envctx = {
+var defaultBrowserEnvCtx = {
   toBase64: function toBase64(data) {
     return btoa(data);
   },
@@ -795,17 +811,17 @@ var NodeMIMEMessage = /*#__PURE__*/function (_MIMEMessage) {
 
   var _super = _createSuper(NodeMIMEMessage);
 
-  function NodeMIMEMessage() {
+  function NodeMIMEMessage(envctx) {
     _classCallCheck__default["default"](this, NodeMIMEMessage);
 
-    return _super.call(this, envctx);
+    return _super.call(this, _objectSpread(_objectSpread({}, defaultBrowserEnvCtx), envctx));
   }
 
-  return NodeMIMEMessage;
+  return _createClass__default["default"](NodeMIMEMessage);
 }(MIMEMessage);
 
-function createMimeMessage() {
-  return new NodeMIMEMessage();
+function createMimeMessage(envctx) {
+  return new NodeMIMEMessage(envctx);
 }
 
 exports.createMimeMessage = createMimeMessage;
